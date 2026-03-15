@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>NethraCount</title>
+
+<!-- Style -->
+<link rel="stylesheet" href="style.css">
+
+<!-- Manifest PWA -->
+<link rel="manifest" href="manifest.json">
+
+<!-- Favicon multi-tailles -->
+<link rel="icon" type="image/png" sizes="32x32" href="icons/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="192x192" href="icons/favicon-192x192.png">
+<link rel="apple-touch-icon" sizes="180x180" href="icons/favicon-180x180.png">
+
+<!-- Thème couleur navigateur -->
+<meta name="theme-color" content="#e0b000">
+</head>
+
+<body>
+
+<h1 class="title-container">
+  <img src="icons/icon-512.png" alt="Logo" class="title-icon">
+  <div class="title-text">
+    <span class="nethra">Nethra</span><br>
+    <span class="Count">Count</span>
+  </div>
+</h1>
+
+<div class="section-divider"></div>
+
+<h2>Créer un nouveau compteur</h2>
+<input id="newEventName" placeholder="Nom du compteur" aria-label="Nom du nouveau compteur">
+<button onclick="createNewEvent()" aria-label="Créer l'event">Créer compteur </button>
+
+<div class="section-divider"></div>
+
+<h2>Reprendre un modèle</h2>
+
+<select id="eventSelect">
+  <!-- Options ajoutées dynamiquement -->
+</select>
+
+<div style="margin-top: 10px; display: flex; gap: 10px;">
+    <button onclick="loadEvent()" aria-label="Charger modèle">Charger</button>
+    <button onclick="deleteSelectedEvent()" aria-label="Supprimer le modèle">Supprimer</button>
+</div>
+
+<script src="app.js"></script>
+
+</body>
+</html>
