@@ -26,7 +26,6 @@
 /* =========================
    NETHRA THEME
    ========================= */
-
 * {
     margin: 0;
     padding: 0;
@@ -36,7 +35,6 @@
 /* =========================
    BODY
    ========================= */
-
 body {
     font-family: 'Roboto Mono', monospace;
     background: #0F0F2F;
@@ -51,7 +49,6 @@ body {
 /* =========================
    TITLES
    ========================= */
-
 h1, h2 {
     font-family: 'Orbitron', sans-serif;
 }
@@ -73,7 +70,6 @@ h2 {
 /* =========================
    INPUTS
    ========================= */
-
 input, select {
     background: rgba(15,15,47,0.8);
     border: 1px solid rgba(15,79,143,0.5);
@@ -85,7 +81,6 @@ input, select {
     transition: 0.25s;
 }
 
-/* Couleur du menu déroulant */
 select option {
     background-color: #0F0F2F;
     color: #E0E6F0;
@@ -103,7 +98,6 @@ select {
     appearance: none;
     -webkit-appearance: none;
     -moz-appearance: none;
-
     background-image: linear-gradient(45deg, transparent 50%, #52C5FF 50%),
                       linear-gradient(135deg, #52C5FF 50%, transparent 50%);
     background-position:
@@ -116,7 +110,6 @@ select {
 /* =========================
    BUTTONS
    ========================= */
-
 button {
     background: #0F0F2F;
     color: #E0E6F0;
@@ -137,7 +130,6 @@ button:focus {
     box-shadow: 0 0 10px rgba(82,197,255,0.5);
 }
 
-/* Style spécifique pour bouton Supprimer modèle */
 button[aria-label="Supprimer le modèle"] {
     background: #2a0f18;
     color: #ff6b81;
@@ -153,7 +145,6 @@ button[aria-label="Supprimer le modèle"]:hover {
 /* =========================
    COUNTER CARDS
    ========================= */
-
 .counter {
     display: flex;
     align-items: center;
@@ -183,7 +174,6 @@ button[aria-label="Supprimer le modèle"]:hover {
 /* =========================
    COUNTER TEXT
    ========================= */
-
 .counter span {
     font-size: 1rem;
     color: #E0E6F0;
@@ -203,7 +193,6 @@ button[aria-label="Supprimer le modèle"]:hover {
 /* =========================
    PLUS / MINUS BUTTONS
    ========================= */
-
 .plus {
     background: #52C5FF;
     color: #000;
@@ -220,13 +209,11 @@ button[aria-label="Supprimer le modèle"]:hover {
     padding: 12px 18px;
 }
 
-/* Glow pour les deux boutons */
 .plus.glow,
 .minus.glow {
     box-shadow: 0 0 25px rgba(82,197,255,0.9);
 }
 
-/* Hover sans changement de couleur ni zoom */
 .plus:hover,
 .minus:hover {
     box-shadow: 0 0 22px rgba(82,197,255,0.7);
@@ -234,7 +221,6 @@ button[aria-label="Supprimer le modèle"]:hover {
     transform: none;
 }
 
-/* Empêche changement de couleur au clic */
 .plus:active,
 .minus:active {
     color: inherit;
@@ -243,7 +229,6 @@ button[aria-label="Supprimer le modèle"]:hover {
 /* =========================
    DELETE BUTTON
    ========================= */
-
 .delete {
     background: #2a0f18;
     color: #ff6b81;
@@ -263,17 +248,12 @@ button[aria-label="Supprimer le modèle"]:hover {
 /* =========================
    CONTAINER
    ========================= */
-
 #counters {
     margin-top: 30px;
     display: flex;
     flex-direction: column;
     align-items: center;
 }
-
-/* =========================
-   INPUT ADD COUNTER
-   ========================= */
 
 #addCounterSection {
     display: flex;
@@ -284,7 +264,6 @@ button[aria-label="Supprimer le modèle"]:hover {
 /* =========================
    LINKS
    ========================= */
-
 a, a#backLink {
     color: #52C5FF;
     text-decoration: none;
@@ -298,7 +277,6 @@ a:hover, a#backLink:hover {
 /* =========================
    RESPONSIVE
    ========================= */
-
 @media (max-width: 500px) {
     .counter {
         width: 95%;
@@ -308,7 +286,6 @@ a:hover, a#backLink:hover {
 }
 
 /* ===== TITRE NETHRA + COUNT ===== */
-
 .title-container {
     position: relative;
     height: 120px;
@@ -343,7 +320,6 @@ a:hover, a#backLink:hover {
 }
 
 /* ===== SEPARATOR ===== */
-
 .section-divider {
     height: 2px;
     width: 100%;
@@ -352,16 +328,14 @@ a:hover, a#backLink:hover {
     background: linear-gradient(to right, #0F0F2F, #0F4F8F, #0F0F2F);
 }
 
-
 /* ===== Police Roboto Mono ===== */
-
 input, select, button {
     font-family: 'Roboto Mono', monospace;
 }
 
 /* Retour accueil image */
 #backHome {
-    margin-top: 0px; /* réduit l'espace entre séparateur et image */
+    margin-top: 0px;
     text-align: center;
 }
 
@@ -378,7 +352,6 @@ input, select, button {
 /* =========================
    BUTTON RESET
    ========================= */
-
 #actions button[aria-label="Remise à zéro"] {
     background: #0F0F2F;
     color: #E0E6F0;

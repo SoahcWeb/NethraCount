@@ -1,145 +1,144 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>NethraCount - Event</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NethraCount - Event</title>
 
-<!-- Style -->
-<link rel="stylesheet" href="style.css">
+    <!-- Style -->
+    <link rel="stylesheet" href="style.css">
 
-<!-- Manifest PWA -->
-<link rel="manifest" href="manifest.json">
+    <!-- Manifest PWA -->
+    <link rel="manifest" href="manifest.json">
 
-<!-- Favicon multi-tailles -->
-<link rel="icon" type="image/png" sizes="32x32" href="icons/favicon-32x32.png">
-<link rel="icon" type="image/png" sizes="192x192" href="icons/favicon-192x192.png">
-<link rel="apple-touch-icon" sizes="180x180" href="icons/favicon-180x180.png">
+    <!-- Favicon multi-tailles -->
+    <link rel="icon" type="image/png" sizes="32x32" href="icons/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="192x192" href="icons/favicon-192x192.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="icons/favicon-180x180.png">
 
-<!-- Thème couleur navigateur -->
-<meta name="theme-color" content="#e0b000">
+    <!-- Thème couleur navigateur -->
+    <meta name="theme-color" content="#e0b000">
 
-<style>
-/* ===== Retour accueil image ===== */
-#backHome {
-    margin-top: 5px; /* réduit l'espace avec le séparateur */
-    text-align: center;
-}
+    <style>
+        /* ===== Retour accueil image ===== */
+        #backHome {
+            margin-top: 5px; /* réduit l'espace avec le séparateur */
+            text-align: center;
+        }
 
-.back-img {
-    width: 100px;
-    height: 100px;
-    transition: transform 0.2s, filter 0.2s; /* transition douce */
-}
+        .back-img {
+            width: 100px;
+            height: 100px;
+            transition: transform 0.2s, filter 0.2s; /* transition douce */
+        }
 
-/* Hover : léger effet "low" */
-.back-img:hover {
-    transform: scale(1.05); /* léger zoom */
-    filter: brightness(0.85); /* diminue légèrement la luminosité */
-}
-</style>
-
+        /* Hover : léger effet "low" */
+        .back-img:hover {
+            transform: scale(1.05); /* léger zoom */
+            filter: brightness(0.85); /* diminue légèrement la luminosité */
+        }
+    </style>
 </head>
 
 <body>
 
-<!-- Header avec logo -->
-<h1 class="title-container">
-  <img src="icons/icon-512.png" alt="Logo" class="title-icon">
-  <div class="title-text">
-    <span class="nethra">Nethra</span><br>
-    <span class="Count">Count</span>
-  </div>
-</h1>
+    <!-- Header avec logo -->
+    <h1 class="title-container">
+        <img src="icons/icon-512.png" alt="Logo" class="title-icon">
+        <div class="title-text">
+            <span class="nethra">Nethra</span><br>
+            <span class="Count">Count</span>
+        </div>
+    </h1>
 
-<!-- Séparateur sous le titre -->
-<div class="section-divider"></div>
+    <!-- Séparateur sous le titre -->
+    <div class="section-divider"></div>
 
-<!-- Titre dynamique avec span pour le nom de l'event -->
-<h2 id="eventTitle">Compteur pour : <span id="eventName"></span></h2>
+    <!-- Titre dynamique avec span pour le nom de l'event -->
+    <h2 id="eventTitle">Compteur pour : <span id="eventName"></span></h2>
 
-<!-- Section pour ajouter un compteur -->
-<div id="addCounterSection">
-    <input id="newCounterName" placeholder="Nom du compteur" aria-label="Nom du compteur">
-    <button onclick="addCounterFromInput()" aria-label="Ajouter compteur">Ajouter</button>
-</div>
+    <!-- Section pour ajouter un compteur -->
+    <div id="addCounterSection">
+        <input id="newCounterName" placeholder="Nom du compteur" aria-label="Nom du compteur">
+        <button onclick="addCounterFromInput()" aria-label="Ajouter compteur">Ajouter</button>
+    </div>
 
-<!-- Conteneur des compteurs -->
-<div id="counters">
-    <!-- Compteurs ajoutés dynamiquement -->
-</div>
+    <!-- Conteneur des compteurs -->
+    <div id="counters">
+        <!-- Compteurs ajoutés dynamiquement -->
+    </div>
 
-<!-- Export, sauvegarde et reset -->
-<div id="actions" style="display: flex; gap: 10px; margin-top: 10px;">
-    <button onclick="exportResults()" aria-label="Exporter les résultats">Exporter</button>
-    <button onclick="saveModel()" aria-label="Sauvegarder modèle">Sauvegarder modèle</button>
-    <button onclick="resetCounters()" aria-label="Remise à zéro">Reset</button>
-</div>
+    <!-- Export, sauvegarde et reset -->
+    <div id="actions" style="display: flex; gap: 10px; margin-top: 10px;">
+        <button onclick="exportResults()" aria-label="Exporter les résultats">Exporter</button>
+        <button onclick="saveModel()" aria-label="Sauvegarder modèle">Sauvegarder modèle</button>
+        <button onclick="resetCounters()" aria-label="Remise à zéro">Reset</button>
+    </div>
 
-<!-- Séparateur au-dessus du bouton retour -->
-<div class="section-divider"></div>
+    <!-- Séparateur au-dessus du bouton retour -->
+    <div class="section-divider"></div>
 
-<!-- Lien retour vers l'accueil avec image -->
-<div id="backHome">
-    <a href="index.html" aria-label="Retour à l'accueil">
-        <img src="icons/retour.png" alt="Retour à l'accueil" class="back-img">
-    </a>
-</div>
+    <!-- Lien retour vers l'accueil avec image -->
+    <div id="backHome">
+        <a href="index.html" aria-label="Retour à l'accueil">
+            <img src="icons/retour.png" alt="Retour à l'accueil" class="back-img">
+        </a>
+    </div>
 
-<script src="app.js"></script>
+    <script src="app.js"></script>
 
-<!-- Librairie SortableJS pour drag & drop -->
-<script src="https://cdn.jsdelivr.net/npm/sortablejs@1.15.0/Sortable.min.js"></script>
+    <!-- Librairie SortableJS pour drag & drop -->
+    <script src="https://cdn.jsdelivr.net/npm/sortablejs@1.15.0/Sortable.min.js"></script>
 
-<script>
-// Drag & drop uniquement pour réordonner manuellement
-document.addEventListener("DOMContentLoaded", () => {
-    let countersContainer = document.getElementById("counters");
+    <script>
+        // Drag & drop uniquement pour réordonner manuellement
+        document.addEventListener("DOMContentLoaded", () => {
+            let countersContainer = document.getElementById("counters");
 
-    new Sortable(countersContainer, {
-        animation: 200,
-        ghostClass: 'dragging',
-        onEnd: () => {
-            let eventIndex = localStorage.getItem("currentEvent");
-            let newOrder = Array.from(countersContainer.children).map(c => {
-                let index = c.dataset.index;
-                return events[eventIndex].counters[index];
+            new Sortable(countersContainer, {
+                animation: 200,
+                ghostClass: 'dragging',
+                onEnd: () => {
+                    let eventIndex = localStorage.getItem("currentEvent");
+                    let newOrder = Array.from(countersContainer.children).map(c => {
+                        let index = c.dataset.index;
+                        return events[eventIndex].counters[index];
+                    });
+                    events[eventIndex].counters = newOrder;
+                    localStorage.setItem("events", JSON.stringify(events));
+                }
             });
-            events[eventIndex].counters = newOrder;
+        });
+
+        // Incrémentation sans tri automatique
+        function increment(i) {
+            let eventIndex = localStorage.getItem("currentEvent");
+            events[eventIndex].counters[i].value++;
+
+            let counterDiv = document.getElementById(`counter-${i}`);
+            let plusBtn = counterDiv.querySelector(".plus");
+            plusBtn.classList.add("flash-glow");
+            setTimeout(() => plusBtn.classList.remove("flash-glow"), 300);
+
             localStorage.setItem("events", JSON.stringify(events));
+            renderCounters();
         }
-    });
-});
 
-// Incrémentation sans tri automatique
-function increment(i) {
-    let eventIndex = localStorage.getItem("currentEvent");
-    events[eventIndex].counters[i].value++;
+        // Remet tous les compteurs à 0
+        function resetCounters() {
+            let eventIndex = localStorage.getItem("currentEvent");
+            if (eventIndex === null) return;
 
-    let counterDiv = document.getElementById(`counter-${i}`);
-    let plusBtn = counterDiv.querySelector(".plus");
-    plusBtn.classList.add("flash-glow");
-    setTimeout(() => plusBtn.classList.remove("flash-glow"), 300);
+            events[eventIndex].counters.forEach(counter => counter.value = 0);
+            localStorage.setItem("events", JSON.stringify(events));
+            renderCounters();
+        }
 
-    localStorage.setItem("events", JSON.stringify(events));
-    renderCounters();
-}
-
-// Remet tous les compteurs à 0
-function resetCounters() {
-    let eventIndex = localStorage.getItem("currentEvent");
-    if(eventIndex === null) return;
-
-    events[eventIndex].counters.forEach(counter => counter.value = 0);
-    localStorage.setItem("events", JSON.stringify(events));
-    renderCounters();
-}
-
-// Mettre le nom de l'event dans le span
-function updateEventTitle(eventName) {
-    document.getElementById("eventName").innerText = eventName;
-}
-</script>
+        // Mettre le nom de l'event dans le span
+        function updateEventTitle(eventName) {
+            document.getElementById("eventName").innerText = eventName;
+        }
+    </script>
 
 </body>
 </html>
