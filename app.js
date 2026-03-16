@@ -40,19 +40,6 @@ window.onload = function () {
     // Si on est sur la page event
     if (document.getElementById("counters")) {
 
-        if (!document.getElementById("backLink")) {
-            const backLink = document.createElement('a');
-            backLink.id = "backLink";
-            backLink.href = "index.html";
-            backLink.innerText = "⬅️ Retour à l'accueil";
-            backLink.style.display = "block";
-            backLink.style.marginBottom = "20px";
-            backLink.style.color = "#52C5FF";
-            backLink.style.textDecoration = "underline";
-            backLink.style.cursor = "pointer";
-            document.body.insertBefore(backLink, document.getElementById("eventTitle"));
-        }
-
         let eventIndex = localStorage.getItem("currentEvent");
 
         if (eventIndex === null || !events[eventIndex]) {
@@ -93,7 +80,7 @@ function createNewEvent() {
     localStorage.setItem("events", JSON.stringify(events));
     let index = events.length - 1;
     localStorage.setItem("currentEvent", index);
-    window.location = "event.html";
+    window.location = "compteur.html";
 }
 
 // Charger un event via le select
@@ -104,7 +91,7 @@ function loadEvent() {
         return;
     }
     localStorage.setItem("currentEvent", select.value);
-    window.location = "event.html";
+    window.location = "compteur.html";
 }
 
 // Ajouter un compteur
@@ -124,9 +111,12 @@ function renderCounters() {
     let eventIndex = localStorage.getItem("currentEvent");
     let event = events[eventIndex];
     let container = document.getElementById("counters");
-    document.getElementById("eventTitle").innerText = event.name;
+    document.getElementById("eventName").innerText = `${event.name}`;
     container.innerHTML = "";
-    event.counters.sort((a,b) => b.value - a.value);
+
+    // Ne plus trier automatiquement pour conserver l'ordre de création
+    // event.counters.sort((a,b) => b.value - a.value); <-- supprimé
+
     event.counters.forEach((c, i) => {
         let div = document.createElement("div");
         div.className = "counter";
@@ -134,12 +124,12 @@ function renderCounters() {
         div.dataset.index = i;
         div.id = `counter-${i}`;
         div.innerHTML = `
-<button type="button" class="minus" onclick="decrement(${i})">−</button>
-<span class="counter-name">${c.name}</span>
-<span class="value">${c.value}</span>
-<button type="button" class="plus" onclick="incrementWithGlow(this, ${i})">+</button>
-<button type="button" class="delete" onclick="deleteCounter(${i})">🗑</button>
-`;
+            <button type="button" class="minus" onclick="decrement(${i})">−</button>
+            <span class="counter-name">${c.name}</span>
+            <span class="value">${c.value}</span>
+            <button type="button" class="plus" onclick="incrementWithGlow(this, ${i})">+</button>
+            <button type="button" class="delete" onclick="deleteCounter(${i})">🗑</button>
+        `;
         container.appendChild(div);
     });
 }
