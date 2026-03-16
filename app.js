@@ -39,7 +39,6 @@ window.onload = function () {
 
     // Si on est sur la page event
     if (document.getElementById("counters")) {
-
         let eventIndex = localStorage.getItem("currentEvent");
 
         if (eventIndex === null || !events[eventIndex]) {
@@ -98,7 +97,10 @@ function loadEvent() {
 function addCounterFromInput() {
     let input = document.getElementById("newCounterName");
     let name = input.value.trim().substring(0, 12);
-    if (!name) { alert("Le compteur doit avoir un nom !"); return; }
+    if (!name) {
+        alert("Le compteur doit avoir un nom !");
+        return;
+    }
     let eventIndex = localStorage.getItem("currentEvent");
     events[eventIndex].counters.push({ name: name, value: 0 });
     localStorage.setItem("events", JSON.stringify(events));
@@ -176,7 +178,9 @@ function exportResults() {
     let date = new Date();
     text += "Event : " + event.name + "\n";
     text += "Date : " + date.toLocaleDateString() + "\n\n";
-    event.counters.forEach(c => { text += c.name + " : " + c.value + "\n"; });
+    event.counters.forEach(c => {
+        text += c.name + " : " + c.value + "\n";
+    });
     let blob = new Blob([text], { type: "text/plain" });
     let a = document.createElement("a");
     a.href = URL.createObjectURL(blob);
