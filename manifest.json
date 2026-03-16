@@ -2,6 +2,8 @@
   "name": "NethraCount",
   "short_name": "Nethra",
   "start_url": "index.html",
+  "id": "index.html",
+  "scope": "./",
   "display": "standalone",
   "background_color": "#0F0F2F",
   "theme_color": "#e0b000",

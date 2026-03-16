@@ -18,11 +18,45 @@
 
 <!-- Thème couleur navigateur -->
 <meta name="theme-color" content="#e0b000">
+
+<style>
+/* ===== Retour accueil image ===== */
+#backHome {
+    margin-top: 5px; /* réduit l'espace avec le séparateur */
+    text-align: center;
+}
+
+.back-img {
+    width: 100px;
+    height: 100px;
+    transition: transform 0.2s, filter 0.2s; /* transition douce */
+}
+
+/* Hover : léger effet "low" */
+.back-img:hover {
+    transform: scale(1.05); /* léger zoom */
+    filter: brightness(0.85); /* diminue légèrement la luminosité */
+}
+</style>
+
 </head>
 
 <body>
 
-<h1 id="eventTitle">🕸️ Event</h1>
+<!-- Header avec logo -->
+<h1 class="title-container">
+  <img src="icons/icon-512.png" alt="Logo" class="title-icon">
+  <div class="title-text">
+    <span class="nethra">Nethra</span><br>
+    <span class="Count">Count</span>
+  </div>
+</h1>
+
+<!-- Séparateur sous le titre -->
+<div class="section-divider"></div>
+
+<!-- Titre dynamique avec span pour le nom de l'event -->
+<h2 id="eventTitle">Compteur pour : <span id="eventName"></span></h2>
 
 <!-- Section pour ajouter un compteur -->
 <div id="addCounterSection">
@@ -31,20 +65,34 @@
 </div>
 
 <!-- Conteneur des compteurs -->
-<div id="counters"></div>
+<div id="counters">
+    <!-- Compteurs ajoutés dynamiquement -->
+</div>
 
-<!-- Export et sauvegarde -->
-<div id="actions">
+<!-- Export, sauvegarde et reset -->
+<div id="actions" style="display: flex; gap: 10px; margin-top: 10px;">
     <button onclick="exportResults()" aria-label="Exporter les résultats">Exporter</button>
     <button onclick="saveModel()" aria-label="Sauvegarder modèle">Sauvegarder modèle</button>
+    <button onclick="resetCounters()" aria-label="Remise à zéro">Reset</button>
+</div>
+
+<!-- Séparateur au-dessus du bouton retour -->
+<div class="section-divider"></div>
+
+<!-- Lien retour vers l'accueil avec image -->
+<div id="backHome">
+    <a href="index.html" aria-label="Retour à l'accueil">
+        <img src="icons/retour.png" alt="Retour à l'accueil" class="back-img">
+    </a>
 </div>
 
 <script src="app.js"></script>
 
 <!-- Librairie SortableJS pour drag & drop -->
 <script src="https://cdn.jsdelivr.net/npm/sortablejs@1.15.0/Sortable.min.js"></script>
+
 <script>
-// Initialisation du drag & drop
+// Drag & drop uniquement pour réordonner manuellement
 document.addEventListener("DOMContentLoaded", () => {
     let countersContainer = document.getElementById("counters");
 
@@ -52,7 +100,6 @@ document.addEventListener("DOMContentLoaded", () => {
         animation: 200,
         ghostClass: 'dragging',
         onEnd: () => {
-            // Reclasser les compteurs après déplacement
             let eventIndex = localStorage.getItem("currentEvent");
             let newOrder = Array.from(countersContainer.children).map(c => {
                 let index = c.dataset.index;
@@ -60,27 +107,37 @@ document.addEventListener("DOMContentLoaded", () => {
             });
             events[eventIndex].counters = newOrder;
             localStorage.setItem("events", JSON.stringify(events));
-            renderCounters();
         }
     });
 });
 
-// Animation lumineuse + tri par score auto
+// Incrémentation sans tri automatique
 function increment(i) {
     let eventIndex = localStorage.getItem("currentEvent");
     events[eventIndex].counters[i].value++;
 
-    // Animation glow sur le bouton +
     let counterDiv = document.getElementById(`counter-${i}`);
     let plusBtn = counterDiv.querySelector(".plus");
     plusBtn.classList.add("flash-glow");
     setTimeout(() => plusBtn.classList.remove("flash-glow"), 300);
 
-    // Tri automatique par score décroissant
-    events[eventIndex].counters.sort((a,b) => b.value - a.value);
-
     localStorage.setItem("events", JSON.stringify(events));
     renderCounters();
+}
+
+// Remet tous les compteurs à 0
+function resetCounters() {
+    let eventIndex = localStorage.getItem("currentEvent");
+    if(eventIndex === null) return;
+
+    events[eventIndex].counters.forEach(counter => counter.value = 0);
+    localStorage.setItem("events", JSON.stringify(events));
+    renderCounters();
+}
+
+// Mettre le nom de l'event dans le span
+function updateEventTitle(eventName) {
+    document.getElementById("eventName").innerText = eventName;
 }
 </script>
 
