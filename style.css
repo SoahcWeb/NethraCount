@@ -370,3 +370,11 @@ input, select, button {
     border: 1px solid #ee46c9;
     box-shadow: 0 0 10px rgba(82,197,255,0.5);
 }
+
+.footer {
+    text-align: center;
+    margin-top: 40px;
+    font-size: 0.9rem;
+    color: #888; /* gris discret */
+    font-family: 'Roboto Mono', monospace;
+}
